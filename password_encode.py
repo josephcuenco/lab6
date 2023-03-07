@@ -22,7 +22,19 @@ def encode(password):
     return encoded_pass
 
 
+def decode(password):
+    decoded_pass = ''
+    for i in password:
+        i = int(i)
+        i -= 3
+        if i < 0:
+            i += 10
+        decoded_pass += str(i)
+    return decoded_pass
+
+
 def main():
+    encoded_pass = ""
     loop = True
     while loop is True:
 
@@ -35,6 +47,12 @@ def main():
             encoded_pass = encode(pass_to_encode)
             print('Your password has been encoded and stored!')
             print()
+
+        elif user_option == 2:
+            print(f"The encoded password is {encoded_pass}, and the original password is {decode(encoded_pass)}.\n")
+
+        elif user_option == 3:
+            break
 
 
 if __name__ == '__main__':
